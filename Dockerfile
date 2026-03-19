@@ -20,7 +20,7 @@ RUN apk add --update \
 
 RUN pip install -U pip wheel setuptools maturin
 COPY requirements.txt .
-RUN pip install -r requirements.txt --no-build-isolation
+RUN pip install -r requirements.txt
 
 
 FROM python:${tag}

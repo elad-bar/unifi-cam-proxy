@@ -93,7 +93,7 @@ class UnifiCamBase(metaclass=ABCMeta):
         while True:
             try:
                 msg = await ws.recv()
-            except websockets.exceptions.ConnectionClosedError:
+            except websockets.exceptions.ConnectionClosed:
                 self.logger.info(f"Connection to {self.args.host} was closed.")
                 raise RetryableError()
 
@@ -872,6 +872,7 @@ class UnifiCamBase(metaclass=ABCMeta):
                 "UpdateFirmwareRequest",
                 "Reboot",
                 "ubnt_avclient_hello",
+                "ubnt_avclient_paramAgreement",
                 "ContinuousMove"
             ]
         ):
